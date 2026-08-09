@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SSRP EDITOR</title>
+
+    <link
+        rel="icon"
+        href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🖼️</text></svg>'
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         TITLE
+    ====================================================== -->
+
+    <h1 class="title">
+        🎨 SSRP Editor
+    </h1>
+
+
+    <!-- =====================================================
+         CONTROL PANEL
+    ====================================================== -->
+
+<div class="controls">
+
+    <!-- CHATBOX -->
+    <input
+        type="text"
+        id="textInput"
+        placeholder="✏️ Ketik teks (*action)"
+    >
+
+    <!-- BARIS TOMBOL ATAS -->
+    <div class="top-buttons">
+
+<button onclick="addText()">Tambahkan🢁</button>
+<button onclick="addText()">Tambahkan🢃</button>
+
+        <button onclick="undoAction()">
+            ↩️ Undo
+        </button>
+
+        <button onclick="redoAction()">
+            ↪️ Redo
+        </button>
+
+    </div>
+
+
+    <!-- BARIS TOOL -->
+    <div class="bottom-buttons">
+
+        <div class="font-control">
+
+            <label>
+                Ukuran:
+                <span id="fontSizeLabel">17</span>px
+            </label>
+
+            <button onclick="changeFontSize(1)">
+                🔼
+            </button>
+
+            <button onclick="changeFontSize(-1)">
+                🔽
+            </button>
+
+        </div>
+
+
+        <button
+            onclick="document.getElementById('imageInput').click()"
+        >
+            🖼️ Pilih Gambar
+        </button>
+
+
+        <button onclick="downloadImage()">
+            💾 Simpan
+        </button>
+
+
+        <button onclick="uploadToImgur()">
+            ☁️ Upload ke Imgur
+        </button>
+
+    </div>
+
+</div>
+
+
+    <!-- =====================================================
+         EDITOR
+    ====================================================== -->
+
+    <div class="main-wrapper">
+
+        <div class="editor-area">
+
+            <canvas id="canvas"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         IMGUR LINK POPUP
+    ====================================================== -->
+
+    <div
+        id="imgurLinkContainer"
+        class="imgur-link-container"
+        style="display: none;"
+    >
+
+        <input
+            type="text"
+            id="imgurLinkInput"
+            readonly
+        >
+
+        <button onclick="copyImgurLink()">
+            Copy
+        </button>
+
+        <button onclick="closeImgurLink()">
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         WATERMARK
+    ====================================================== -->
+
+    <div class="watermark">
+        © Dimas Mardiansyah & Rohiimatt
+    </div>
+
+
+    <!-- =====================================================
+         FILE INPUT
+    ====================================================== -->
+
+    <input
+        type="file"
+        id="imageInput"
+        accept="image/*"
+        style="display: none;"
+    >
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
