@@ -1,0 +1,779 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.title {
+    font-size: 2rem;
+
+    background: linear-gradient(
+        90deg,
+        #00ff66,
+        #e52e71
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin: 0 0 20px 0;
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+canvas {
+    border: 2px solid #444;
+
+    margin: 20px auto;
+
+    cursor: pointer;
+
+    background-color: #1e1e1e;
+
+    display: block;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.1);
+
+    transition: transform 0.2s ease;
+}
+
+
+canvas:hover {
+    transform: scale(1.02);
+}
+
+
+/* =========================================================
+   CONTROL BOX
+========================================================= */
+
+.controls {
+
+    /* UKURAN MENGIKUT ISI */
+
+    width: max-content;
+
+    max-width: calc(100% - 30px);
+
+    margin: 20px auto;
+
+    padding: 15px;
+
+    background: rgba(0,0,0,0.30);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.30);
+
+
+    /*
+       PENTING:
+       Gunakan flex column
+    */
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CHATBOX
+========================================================= */
+
+#textInput {
+
+    width: 550px;
+
+    height: 42px;
+
+    padding: 10px 14px;
+
+    box-sizing: border-box;
+
+    background-color: #1a1a1a;
+
+    border: 1px solid #555;
+
+    color: #eaeaea;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-family: inherit;
+
+    outline: none;
+
+    /*
+       CHATBOX SELALU DI TENGAH
+    */
+
+    align-self: center;
+}
+
+
+#textInput:focus {
+    border-color: #00ff66;
+
+    box-shadow:
+        0 0 8px rgba(0,255,102,0.25);
+}
+
+
+#textInput::placeholder {
+    color: #888;
+}
+
+
+/* =========================================================
+   BARIS ATAS
+   Tambahkan + Tambahkan + Undo + Redo
+========================================================= */
+
+.top-buttons {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    width: max-content;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   BARIS BAWAH
+========================================================= */
+
+.bottom-buttons {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    width: max-content;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   FONT CONTROL
+========================================================= */
+
+.font-control {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   LABEL UKURAN
+========================================================= */
+
+.font-control label {
+
+    white-space: nowrap;
+
+    font-size: 14px;
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   FONT SIZE NUMBER
+========================================================= */
+
+#fontSizeLabel {
+
+    display: inline-block;
+
+    min-width: 25px;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    color: #ffd369;
+}
+
+
+/* =========================================================
+   SEMUA BUTTON
+========================================================= */
+
+.controls button {
+
+    margin: 0;
+
+    padding: 10px 14px;
+
+    min-height: 42px;
+
+    background:
+        linear-gradient(
+            45deg,
+            #00ff66,
+            #06781b
+        );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.2);
+
+    transition:
+        all 0.3s ease;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.controls button:hover {
+
+    background:
+        linear-gradient(
+            45deg,
+            #00ff66,
+            #ff512f
+        );
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(0,0,0,0.4);
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+========================================================= */
+
+.main-wrapper {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-top: 20px;
+}
+
+
+.editor-area {
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   WATERMARK
+========================================================= */
+
+.watermark {
+
+    position: fixed;
+
+    bottom: 10px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color:
+        rgba(255,255,255,0.4);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   IMGUR LINK CONTAINER
+========================================================= */
+
+.imgur-link-container {
+
+    position: fixed;
+
+    top: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 1000;
+
+    padding: 12px;
+
+    background-color:
+        rgba(30,30,30,0.95);
+
+    border-radius: 10px;
+
+    max-width: 600px;
+
+    box-shadow:
+        0 0 12px rgba(0,0,0,0.4);
+}
+
+
+.imgur-link-container input {
+
+    width: 70%;
+
+    padding: 8px;
+
+    margin-right: 8px;
+
+    background: #222;
+
+    color: white;
+
+    border: 1px solid #555;
+
+    border-radius: 5px;
+
+    box-sizing: border-box;
+}
+
+
+.imgur-link-container button {
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            45deg,
+            #3a2c72,
+            #6d4fc2
+        );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 5px;
+
+    transition:
+        background 0.3s;
+}
+
+
+.imgur-link-container button:hover {
+
+    background:
+        linear-gradient(
+            45deg,
+            #6d4fc2,
+            #3a2c72
+        );
+}
+
+
+.imgur-link-container button:last-child {
+
+    background: #ff4444;
+}
+
+
+.imgur-link-container button:last-child:hover {
+
+    background: #ff6b6b;
+}
+
+
+/* =========================================================
+   IKLAN KIRI / KANAN
+========================================================= */
+
+.ad-banner {
+
+    width: 160px;
+
+    min-height: 600px;
+
+    background:
+        rgba(0,0,0,0.4);
+
+    border-radius: 10px;
+
+    padding: 10px;
+
+    text-align: center;
+
+    box-shadow:
+        0 0 10px rgba(0,0,0,0.4);
+
+    box-sizing: border-box;
+}
+
+
+.ad-banner p {
+
+    font-size: 12px;
+
+    color: #ffd369;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+
+.ad-banner img {
+
+    width: 100%;
+
+    border-radius: 6px;
+}
+
+
+/* =========================================================
+   TOP ADS TRAY
+========================================================= */
+
+.ads-tray {
+
+    position: fixed;
+
+    top: -150px;
+
+    left: 0;
+
+    width: 100%;
+
+    background:
+        rgba(0,0,0,0.95);
+
+    backdrop-filter: blur(6px);
+
+    display: flex;
+
+    justify-content: center;
+
+    transition:
+        top 0.5s ease;
+
+    z-index: 9999;
+
+    padding: 10px 0;
+}
+
+
+.ads-tray.show {
+    top: 0;
+}
+
+
+.ads-content {
+
+    position: relative;
+
+    text-align: center;
+}
+
+
+.ads-content img {
+
+    max-width: 90%;
+
+    border-radius: 8px;
+}
+
+
+.ads-label {
+
+    display: block;
+
+    font-size: 12px;
+
+    color: #ffd369;
+
+    margin-bottom: 5px;
+}
+
+
+.ads-close {
+
+    position: absolute;
+
+    top: -10px;
+
+    right: -10px;
+
+    background: #ff4444;
+
+    border: none;
+
+    color: white;
+
+    border-radius: 50%;
+
+    width: 25px;
+
+    height: 25px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+.ads-close:hover {
+    background: #ff6b6b;
+}
+
+
+.ads-content iframe {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+body.mobile {
+
+    margin: 10px;
+}
+
+
+body.mobile canvas {
+
+    max-width: 100%;
+
+    height: auto;
+}
+
+
+body.mobile .controls {
+
+    width: calc(100% - 20px);
+
+    max-width: 500px;
+
+    padding: 10px;
+
+    gap: 8px;
+}
+
+
+/* CHATBOX HP */
+
+body.mobile #textInput {
+
+    width: 90%;
+
+    max-width: 330px;
+}
+
+
+/* BARIS ATAS HP */
+
+body.mobile .top-buttons {
+
+    width: 100%;
+
+    flex-wrap: wrap;
+}
+
+
+/* BARIS BAWAH HP */
+
+body.mobile .bottom-buttons {
+
+    width: 100%;
+
+    flex-wrap: wrap;
+}
+
+
+/* BUTTON HP */
+
+body.mobile .controls button {
+
+    font-size: 12px;
+
+    padding: 9px 10px;
+}
+
+
+/* FONT CONTROL HP */
+
+body.mobile .font-control {
+
+    width: 100%;
+
+    justify-content: center;
+}
+
+
+/* IKLAN HP */
+
+body.mobile .ad-banner {
+
+    display: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+
+        margin: 10px;
+    }
+
+
+    .title {
+
+        font-size: 1.5rem;
+    }
+
+
+    .controls {
+
+        max-width:
+            calc(100% - 10px);
+    }
+
+
+    .top-buttons {
+
+        flex-wrap: wrap;
+
+        max-width: 100%;
+    }
+
+
+    .bottom-buttons {
+
+        flex-wrap: wrap;
+
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================================
+   LAYAR SANGAT KECIL
+========================================================= */
+
+@media (max-width: 450px) {
+
+    #textInput {
+
+        width: 280px;
+
+        max-width: 90vw;
+    }
+
+
+    .top-buttons,
+    .bottom-buttons {
+
+        gap: 6px;
+    }
+
+
+    .controls button {
+
+        font-size: 12px;
+
+        padding: 8px 10px;
+    }
+}
