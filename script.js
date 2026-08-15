@@ -91,6 +91,38 @@ document
 
     });
 
+// =========================================================
+// PASTE IMAGE
+// =========================================================
+
+document.addEventListener('paste', (e) => {
+
+    const items = e.clipboardData?.items;
+
+    if (!items) return;
+
+    for (const item of items) {
+
+        // Hanya proses jika clipboard berisi gambar
+        if (item.type.startsWith('image/')) {
+
+            e.preventDefault();
+
+            const file = item.getAsFile();
+
+            if (file) {
+
+                handleImageUpload(file);
+
+            }
+
+            break;
+
+        }
+
+    }
+
+});
 
 // =========================================================
 // CLICK CANVAS
