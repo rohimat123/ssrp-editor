@@ -380,7 +380,7 @@ function drawCanvas() {
         ctx.textAlign = 'center';
 
         ctx.fillText(
-            'Klik atau drop gambar di sini',
+            'Klik, drop atau paste gambar di sini',
             canvas.width / 2,
             canvas.height / 2
         );
