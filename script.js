@@ -423,11 +423,19 @@ function drawCanvas() {
 
     texts.forEach((textObj) => {
 
-        const isActionText =
-    textObj.text.trim().startsWith('*') ||
-    /^\/do(?:\s|$)/i.test(textObj.text.trim());
+        // /do hanya berfungsi sebagai penanda Action RP.
+        // Prefix /do tidak ikut digambar ke canvas.
+        const originalText = textObj.text;
+        const trimmedText = originalText.trim();
+        const isDoText = /^\/do(?:\s|$)/i.test(trimmedText);
 
-    ctx.strokeStyle = "black";
+        const isActionText =
+            trimmedText.startsWith("*") ||
+            isDoText;
+
+        const displayText = isDoText
+            ? trimmedText.replace(/^\/do\s*/i, "")
+            : originalText;
 
 
         ctx.strokeStyle = "black";
@@ -448,7 +456,7 @@ function drawCanvas() {
         ctx.shadowOffsetY = 2;
 
 
-        textObj.text
+        displayText
             .split('\n')
             .forEach((line, i) => {
 
