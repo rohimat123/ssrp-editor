@@ -424,7 +424,10 @@ function drawCanvas() {
     texts.forEach((textObj) => {
 
         const isActionText =
-            textObj.text.startsWith("*");
+    textObj.text.trim().startsWith('*') ||
+    /^\/do(?:\s|$)/i.test(textObj.text.trim());
+
+    ctx.strokeStyle = "black";
 
 
         ctx.strokeStyle = "black";
